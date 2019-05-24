@@ -3,7 +3,6 @@ import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import styled from "styled-components";
 
-
 const ScrollElement = styled.div`
    background: black;
    padding: 0% 3%;
@@ -25,7 +24,7 @@ const ScrollElement = styled.div`
   }
    
   .alice-carousel__stage-item {
-    width: 350px !important;
+    width: 475px !important;
     height: 100%;
     position: relative;
     display: inline-block;
@@ -41,10 +40,20 @@ const ScrollElement = styled.div`
 }
 
 .alice-carousel__dots {
-    margin: -14% 0 5px;
+    margin: -10% 0 5px;
     text-align: center;
     list-style: none;
     padding: 0;
+}
+.alice-carousel__next-btn-item {
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+}
+.alice-carousel__prev-btn-item {
+    display: inline-block;
+    color: white;
+    cursor: pointer;
 }
 
 `;
@@ -115,6 +124,11 @@ export class Gallery extends Component {
         });
     }
 
+    responsive = {
+        0: { items: 1 },
+        1024: { items: 2 },
+    };
+
     render() {
         const {happyCategory, sadCategory, angryCategory, boredCategory, disappointedCategory, embarrassedCategory, drunkCategory, exitedCategory, responsive} = this.state;
         return (
@@ -124,15 +138,16 @@ export class Gallery extends Component {
                     <AliceCarousel
                         duration={400}
                         autoPlay={true}
-                        startIndex={0}
                         fadeOutAnimation={true}
-                        playButtonEnabled={false}
+                        playButtonEnabled={true}
                         responsive={responsive}
                         autoPlayInterval={2000}
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={happyCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={happyCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                            )}
                     />
                 </div>
                 <div>
@@ -148,7 +163,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={sadCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={sadCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
                 <div>
@@ -164,7 +181,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={angryCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={angryCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
                 <div>
@@ -180,7 +199,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={boredCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={boredCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
                 <div>
@@ -196,7 +217,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={disappointedCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={disappointedCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
                 <div>
@@ -212,7 +235,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={exitedCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={exitedCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
                 <div>
@@ -228,7 +253,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={drunkCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={drunkCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
                 <div>
@@ -244,7 +271,9 @@ export class Gallery extends Component {
                         autoPlayDirection="ltr"
                         autoPlayActionDisabled={true}
                         stopAutoPlayOnHover={true}
-                        items={embarrassedCategory.map(gal => <iframe src={gal.embed_url} height={250} width={250}/>)}
+                        items={embarrassedCategory.map((gal,i) =>
+                            <iframe key={i} src={gal.embed_url} height={250} width={290} style={{border: 'none'}}/>
+                        )}
                     />
                 </div>
             </ScrollElement>
